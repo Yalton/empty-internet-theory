@@ -1,0 +1,35 @@
+[package]
+name = "rust_twitter_clone"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tonic = { version = "0.6", features = ["transport"] }
+prost = "0.9"
+redis = "0.23.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+warp = "0.3"
+tokio-tungstenite = "0.15"
+futures-util = "0.3"
+
+[build-dependencies]
+tonic-build = "0.6"
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[[bin]]
+name = "rust_twitter_clone"
+path = "src/main.rs"
+
+[features]
+default = ["full"]
+
+[workspace]
+# If you have multiple packages, you can list them here
+
+# Optional: include other configuration such as `profile.release` to customize build flags, etc.
