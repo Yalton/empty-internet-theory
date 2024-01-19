@@ -19,13 +19,9 @@ path = "./main.rs"
 tauri = { version = "2.0.0-alpha.21", features = [] }
 tauri-plugin-shell = { version = "2.0.0-alpha.6", features = [] }
 
-prost = { version = "0.12.3", features = [] }
-tonic = { version = "0.10.2", features = [] }
 serde = { version = "1.0.195", features = ["derive"] }
 serde_json = { version = "1.0.111", features = [] }
 anyhow = { version = "1.0.79", features = [] }
 
 [build-dependencies]
 tauri-build = { version = "2.0.0-alpha.14", features = ["config-toml"] }
-tonic-build = { version = "0.10.2", features = [] }
-anyhow = { version = "1.0.79", features = [] }

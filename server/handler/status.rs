@@ -1,32 +1,32 @@
-use tonic::{Request, Response, Status};
+use axum::extract::{Json, State};
+use axum::http::StatusCode;
+use serde::Serialize;
 
-use crate::handler::status::pb::info_server::{Info, InfoServer};
-use crate::handler::status::pb::{StatusRequest, StatusResponse};
-use crate::service::State;
+use crate::handler::Result;
+use crate::service::StatusService;
 
-mod pb {
-    tonic::include_proto!("eit.v1");
-}
+#[axum::async_trait]
+pub trait CheckStatus {
+    /// Used as a reason of the bad status check.
+    /// TODO: Infallible as a default error type.
+    type Error: std::error::Error;
 
-#[derive(Debug, Clone)]
-pub struct StatusHandler {}
-
-impl StatusHandler {
-    pub fn new(state: State) -> Self {
-        Self {}
-    }
-
-    pub fn into_server(self) -> InfoServer<Self> {
-        InfoServer::new(self)
+    /// Returns `Ok()` if the service is healthy, reason otherwise.
+    async fn check(&self) -> std::result::Result<(), Self::Error> {
+        Ok(())
     }
 }
 
-#[tonic::async_trait]
-impl Info for StatusHandler {
-    async fn status(
-        &self,
-        request: Request<StatusRequest>,
-    ) -> Result<Response<StatusResponse>, Status> {
-        todo!()
-    }
+#[derive(Debug, Serialize)]
+pub struct StatusRequest {}
+
+#[derive(Debug, Serialize)]
+pub struct StatusResponse {}
+
+pub fn status(
+    State(status): State<StatusService>,
+    Json(body): Json<StatusRequest>,
+) -> Result<(StatusCode, StatusResponse)> {
+    let response = StatusResponse {};
+    Ok((StatusCode::OK, response))
 }
