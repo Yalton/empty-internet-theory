@@ -9,6 +9,7 @@ Thumbs.db
 .fleet/
 
 # Lang: Rs
+.cargo/
 debug/
 target/
 Cargo.lock
@@ -22,6 +23,7 @@ package-lock.json
 env.d.ts
 
 # Output
+gen/
 build/
 coverage/
 *.vendor.*
