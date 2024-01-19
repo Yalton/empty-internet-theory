@@ -1,7 +1,7 @@
 use tonic::{Request, Response, Status};
 
-use crate::handler::status::pb::{StatusRequest, StatusResponse};
 use crate::handler::status::pb::info_server::{Info, InfoServer};
+use crate::handler::status::pb::{StatusRequest, StatusResponse};
 use crate::service::State;
 
 mod pb {
@@ -23,7 +23,10 @@ impl StatusHandler {
 
 #[tonic::async_trait]
 impl Info for StatusHandler {
-    async fn status(&self, request: Request<StatusRequest>) -> Result<Response<StatusResponse>, Status> {
+    async fn status(
+        &self,
+        request: Request<StatusRequest>,
+    ) -> Result<Response<StatusResponse>, Status> {
         todo!()
     }
 }

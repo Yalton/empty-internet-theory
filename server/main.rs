@@ -6,8 +6,8 @@ use tower_http::trace::*;
 use tracing_subscriber::layer::SubscriberExt as _;
 use tracing_subscriber::util::SubscriberInitExt as _;
 
-mod service;
 mod handler;
+mod service;
 
 /// Command-line arguments.
 #[derive(Debug, Parser)]
@@ -40,12 +40,15 @@ async fn main() -> anyhow::Result<()> {
 
     // Service.
     let state = service::State::connect().await?;
+    let timeline = handler::TimelineHandler::new(state.clone()).into_server();
     let status = handler::StatusHandler::new(state.clone()).into_server();
 
     // Listen.
     let addr = SocketAddr::from(([127, 0, 0, 1], args.port));
+    tracing::info!(port = args.port, "server running at {}", addr);
     let server = tonic::transport::Server::builder()
         .layer(middlewares)
+        .add_service(timeline)
         .add_service(status);
 
     server.serve(addr).await?;
