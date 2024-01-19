@@ -2,7 +2,25 @@ version: 2
 updates:
 
   - package-ecosystem: cargo
-    directory: /
+    directory: /server
     schedule:
-      day: monday
       interval: weekly
+      timezone: US/Central
+      day: friday
+      time: 18:00
+
+  - package-ecosystem: npm
+    directory: /client
+    schedule:
+      interval: weekly
+      timezone: US/Central
+      day: friday
+      time: 18:00
+
+  - package-ecosystem: cargo
+    directory: /client/native
+    schedule:
+      interval: weekly
+      timezone: US/Central
+      day: friday
+      time: 18:00
