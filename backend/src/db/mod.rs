@@ -24,9 +24,6 @@ pub fn initialize_db(config: &Config) -> RedisResult<RedisConnection> {
     RedisConnection::new(config)
 }
 
-// You can add additional helper methods for interacting with the Redis database here.
-// For example, methods to save and retrieve users and posts, etc.
-
 // Example of a helper method to save a user to Redis
 impl RedisConnection {
     pub fn save_user(&self, user: &User) -> RedisResult<()> {
