@@ -23,6 +23,8 @@ impl TimelineHandler {
 
 #[tonic::async_trait]
 impl Timeline for TimelineHandler {
+    type EventStream = Box<dyn Stream<Item = Result<EventResponse, Status>> + Send + Sync>;
+
     async fn event(&self, request: Request<EventRequest>) -> Result<Response<Self::EventStream>, Status> {
         // Implementation goes here
         unimplemented!()
