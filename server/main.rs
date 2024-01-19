@@ -15,6 +15,8 @@ struct Args {
     /// Bounded server port.
     #[arg(short, long, default_value_t = 3000)]
     port: u16,
+    #[arg(short, long, default_value = "redis://127.0.0.1/")]
+    redis: String,
 }
 
 #[tokio::main]
