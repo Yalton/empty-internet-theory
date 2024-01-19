@@ -47,6 +47,4 @@ impl RedisClient {
             None => Ok(None),
         }
     }
-
-    // Additional methods for interacting with Redis can be added here.
 }

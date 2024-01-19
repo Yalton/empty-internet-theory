@@ -24,7 +24,6 @@ pub fn initialize_db(config: &Config) -> RedisResult<RedisConnection> {
     RedisConnection::new(config)
 }
 
-// Example of a helper method to save a user to Redis
 impl RedisConnection {
     pub fn save_user(&self, user: &User) -> RedisResult<()> {
         let mut conn = self.client.get_connection()?;
@@ -33,7 +32,6 @@ impl RedisConnection {
         Ok(())
     }
 
-    // Example of a helper method to retrieve a user from Redis
     pub fn get_user(&self, user_id: u64) -> RedisResult<Option<User>> {
         let mut conn = self.client.get_connection()?;
         let key = format!("user:{}", user_id);
@@ -45,7 +43,6 @@ impl RedisConnection {
         }
     }
 
-    // Similar methods can be added for posts
     pub fn save_post(&self, post: &Post) -> RedisResult<()> {
         let mut conn = self.client.get_connection()?;
         let key = format!("post:{}", post.id);
