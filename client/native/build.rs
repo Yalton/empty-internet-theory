@@ -11,5 +11,6 @@ fn main() -> anyhow::Result<()> {
     let eit_proto = proto_dir.join("./eit.v1.proto");
     builder.compile(&[eit_proto], &[proto_dir])?;
 
+    tauri_build::build();
     Ok(())
 }
