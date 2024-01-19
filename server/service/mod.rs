@@ -1,16 +1,16 @@
-pub use crate::service::status::StatusService;
+pub use crate::service::timeline::Timeline;
 
-mod status;
+mod timeline;
 
 #[derive(Debug, Clone)]
 pub struct State {
-    status: StatusService,
+    timeline: Timeline,
 }
 
 impl State {
     pub async fn connect() -> anyhow::Result<Self> {
         Ok(Self {
-            status: StatusService::connect().await?,
+            timeline: Timeline::connect().await?,
         })
     }
 }
@@ -25,4 +25,4 @@ macro_rules! impl_di {
     )+};
 }
 
-impl_di!(status: StatusService);
+impl_di!(timeline: Timeline);

@@ -1,9 +1,9 @@
 use axum::extract::{Json, State};
 use axum::http::StatusCode;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::handler::Result;
-use crate::service::StatusService;
+use crate::service::Timeline;
 
 #[axum::async_trait]
 pub trait CheckStatus {
@@ -17,16 +17,17 @@ pub trait CheckStatus {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Deserialize)]
 pub struct StatusRequest {}
 
 #[derive(Debug, Serialize)]
 pub struct StatusResponse {}
 
-pub fn status(
-    State(status): State<StatusService>,
+#[tracing::instrument]
+pub async fn check(
+    State(status): State<Timeline>,
     Json(body): Json<StatusRequest>,
-) -> Result<(StatusCode, StatusResponse)> {
+) -> Result<(StatusCode, Json<StatusResponse>)> {
     let response = StatusResponse {};
-    Ok((StatusCode::OK, response))
+    Ok((StatusCode::OK, Json(response)))
 }

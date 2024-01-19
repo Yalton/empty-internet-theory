@@ -3,8 +3,8 @@ use std::time::Duration;
 
 use axum::{error_handling::*, routing::*};
 use clap::Parser;
-use tower_http::ServiceBuilderExt as _;
 use tower_http::{cors::*, request_id::*, trace::*};
+use tower_http::ServiceBuilderExt as _;
 use tracing_subscriber::layer::SubscriberExt as _;
 use tracing_subscriber::util::SubscriberInitExt as _;
 
@@ -54,6 +54,8 @@ async fn main() -> anyhow::Result<()> {
     let state = service::State::connect().await?;
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
+        .route("/status", get(handler::status::check))
+        .route("/ws", get(handler::timeline::subscribe))
         .fallback(handler::fallback)
         .layer(middlewares)
         .with_state(state);
@@ -61,7 +63,9 @@ async fn main() -> anyhow::Result<()> {
     // Listen.
     let addr = SocketAddr::from(([127, 0, 0, 1], args.port));
     let listener = tokio::net::TcpListener::bind(addr).await?;
-    axum::serve(listener, app).await.unwrap();
+    tracing::info!(port = args.port, "server running at {}", addr);
+    let app = app.into_make_service_with_connect_info::<SocketAddr>();
+    axum::serve(listener, app).await?;
 
     Ok(())
 }

@@ -4,6 +4,7 @@ use axum::response::{IntoResponse, Response};
 use serde::Serialize;
 
 pub mod status;
+pub mod timeline;
 
 /// Common fallback method (404 Not Found).
 pub async fn fallback() -> Error {

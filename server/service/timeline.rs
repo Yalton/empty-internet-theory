@@ -3,14 +3,14 @@ use std::convert::Infallible;
 use crate::handler::status::CheckStatus;
 
 #[derive(Debug, Clone)]
-pub struct StatusService {}
+pub struct Timeline {}
 
-impl StatusService {
+impl Timeline {
     pub async fn connect() -> anyhow::Result<Self> {
         Ok(Self {})
     }
 }
 
-impl CheckStatus for StatusService {
+impl CheckStatus for Timeline {
     type Error = Infallible;
 }
