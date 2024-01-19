@@ -1,4 +1,5 @@
 pub use status::StatusHandler;
+pub use timeline::TimelineHandler;
 
 mod status;
 mod timeline;
