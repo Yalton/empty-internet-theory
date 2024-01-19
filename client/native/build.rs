@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 fn main() -> anyhow::Result<()> {
-    let proto_dir = PathBuf::from("../server/protocol/");
+    let proto_dir = PathBuf::from("../../server/protocol/");
 
     let builder = tonic_build::configure()
         .build_client(true)
