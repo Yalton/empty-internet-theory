@@ -1,7 +1,106 @@
+:root {
+  --color-gray: #7b9696;
+  --color-cyan: #03acb5;
+  --color-dark-green: #06161a;
+  --color-off-white: #fffbff;
+  --color-blue: #1b2cc1;
+}
+
 .logo.vite:hover {
   filter: drop-shadow(0 0 2em #747bff);
 }
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafb);
+}
+
+.app {
+  font-family: "Arial", sans-serif;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.4rem;
+  background-color: var(--color-dark-green);
+  color: var(--color-off-white);
+}
+
+.message {
+  border-radius: 1rem;
+  padding: 1.2rem;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.message-info {
+  /* Allow the text next to the profile icon to wrap */
+  flex: 1;
+  min-width: 0; /* Prevents flex items from growing past their content */
+  padding-left: 0.5rem;
+}
+
+.displayname,
+.username,
+.timestamp {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* This will truncate the text with an ellipsis */
+}
+
+.displayname {
+  font-size: 0.875rem; /* Adjust size as necessary */
+  margin-right: 0.25rem; /* Spacing between display name and username */
+}
+
+.username {
+  color: var(--color-cyan);
+  font-weight: bold;
+  margin-right: 0.25rem; /* Spacing between username and timestamp */
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}
+
+.message-content {
+  line-height: 1.5;
+  /* Handling overflow text in the message content */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines of text */
+  -webkit-box-orient: vertical;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-dark-green);
+  padding: 1rem 0;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-off-white);
+}
+
+.icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.5rem;
 }

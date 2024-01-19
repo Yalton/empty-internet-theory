@@ -45,3 +45,6 @@ Players and bots can continue to add posts as the game goes on in order to convi
 The game will continue until there is only one human player remaining
 
 Their score will then be saved in a leaderboard and displayed on the front page if it is sufficiently high
+
+
+
