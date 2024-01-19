@@ -6,19 +6,26 @@ use crate::utils::error::ServiceError;
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct User {
     pub id: String,
+    pub displayname: String,
     pub username: String,
-    pub email: String,
-    // You might want to store hashed passwords instead of plain text
-    pub password: String,
+    pub pfp: String,
+    pub bio: String,
+    pub fwing: String,
+    pub fwers: String,
+    pub bot: bool,
 }
 
 impl User {
-    pub fn new(id: String, username: String, email: String, password: String) -> User {
+    pub fn new(id: String, displayname: String, username: String, pfp: String, bio: String, fwing: String, fwers: String, bot: bool) -> User {
         User {
             id,
+            displayname,
             username,
-            email,
-            password,
+            pfp,
+            bio,
+            fwing,
+            fwers,
+            bot,
         }
     }
 

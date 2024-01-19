@@ -1,8 +1,9 @@
 use redis::{Client, Commands};
+use serde_json;
+
 use crate::config::Config;
 use crate::models::user::User;
 use crate::models::post::Post;
-use serde_json;
 
 pub struct RedisClient {
     client: Client,

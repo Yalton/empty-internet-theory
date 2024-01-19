@@ -1,11 +1,12 @@
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
+use crate::content; 
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Post {
     pub id: u64,
     pub user_id: u64,
-    pub content: String,
+    pub content: Content,
     pub timestamp: u64,
 }
 
