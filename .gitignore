@@ -1,0 +1,43 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Editors
+.vs/
+.vscode/
+.idea/
+.fleet/
+
+# Lang: Rs
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+
+# Lang: Ts
+dist/
+node_modules/
+package-lock.json
+*.tsbuildinfo
+env.d.ts
+
+# Output
+build/
+coverage/
+*.vendor.*
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Environment
+env/
+.env
+.env*
+
+# Logs
+logs/
+*.log
+*.log*

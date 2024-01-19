@@ -1,0 +1,26 @@
+# https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "server"
+version = { workspace = true }
+edition = { workspace = true }
+publish = { workspace = true }
+
+[[bin]]
+name = "server"
+path = "./main.rs"
+
+[dependencies]
+clap = { version = "4.4.14", features = ["derive"] }
+tokio = { version = "1.35.1", features = ["macros", "rt-multi-thread"] }
+prost = { version = "0.12.3", features = [] }
+tonic = { version = "0.10.2", features = [] }
+
+tracing = { version = "0.1.40", features = [] }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+serde = { version = "1.0.195", features = ["derive"] }
+anyhow = { version = "1.0.79", features = [] }
+
+[build-dependencies]
+tonic-build = { version = "0.10.2", features = [] }
+anyhow = { version = "1.0.79", features = [] }

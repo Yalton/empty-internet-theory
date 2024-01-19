@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package eit.v1;
+
+message StatusRequest {}
+
+message StatusResponse {}
+
+service Info {
+  rpc Status(StatusRequest) returns (StatusResponse){
+    option idempotency_level = IDEMPOTENT;
+  };
+}
