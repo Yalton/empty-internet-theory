@@ -3,9 +3,9 @@ import { invoke } from "@tauri-apps/api/core";
 import BottomNav from "../common/BottomNav";
 import Post from "../common/Post";
 
-import "./App.css";
+import "../App.css";
 
-function App() {
+function FeedPage() {
 	const [greetMsg, setGreetMsg] = useState("");
 	const [name, setName] = useState("");
 
@@ -83,4 +83,4 @@ function App() {
 	);
 }
 
-export default App;
+export default FeedPage;

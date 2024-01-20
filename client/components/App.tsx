@@ -1,85 +1,23 @@
-import { useState } from "react";
-import { invoke } from "@tauri-apps/api/core";
-import BottomNav from "./common/BottomNav";
-import Post from "./common/Post";
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./loginpage/LoginPage";
+import Lobby from "./lobby/Lobby";
+import FeedPage from "./feed/Feed";
+// import ProfilePage from "./profilepage/ProfilePage";
 import "./App.css";
 
+
+
 function App() {
-	const [greetMsg, setGreetMsg] = useState("");
-	const [name, setName] = useState("");
-
-	async function greet() {
-		setGreetMsg(await invoke("greet", { name }));
-	}
-
-	const posts = [
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-		{
-			displayName: "Jerome PogChampion",
-			username: "JeromeJorganson",
-			timePosted: "2s",
-			content:
-				"lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed",
-		},
-	];
-
 	return (
-		<div className="app">
-			<div className="feed">
-				{posts.map((msg, index) => (
-					<Post
-						key={index}
-						displayName={msg.displayName}
-						username={msg.username}
-						timePosted={msg.timePosted}
-						content={msg.content}
-					/>
-				))}
-			</div>
-			<BottomNav />
-		</div>
+		<Router>
+			<Routes>
+				<Route path="/" element={<LoginPage />} />
+				<Route path="/lobby" element={<Lobby />} />
+				<Route path="/timeline" element={<FeedPage />} />
+				{/* <Route path="/profile" element={<ProfilePage />} /> */}
+			</Routes>
+		</Router>
 	);
 }
 
