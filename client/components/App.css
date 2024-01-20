@@ -286,3 +286,43 @@
   text-align: center;
   padding: 0 1rem;
 }
+
+/* PostGame */
+
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.4rem;
+  background-color: var(--color-dark-green);
+  color: var(--color-off-white);
+}
+
+.end-screen-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.scoreboard {
+  width: 100%;
+  max-width: 500px; /* Adjust as necessary */
+}
+
+.score-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-cyan);
+}
+
+.username {
+  font-weight: bold;
+}
+
+.points {
+  font-size: 1.25rem;
+}
+
