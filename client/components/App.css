@@ -27,24 +27,6 @@
   color: var(--color-off-white);
 }
 
-.message {
-  border-radius: 1rem;
-  padding: 1.2rem;
-}
-
-.message-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.message-info {
-  /* Allow the text next to the profile icon to wrap */
-  flex: 1;
-  min-width: 0; /* Prevents flex items from growing past their content */
-  padding-left: 0.5rem;
-}
-
 .displayname,
 .username,
 .timestamp {
@@ -67,15 +49,6 @@
 .timestamp {
   font-size: 0.75rem;
   color: var(--color-gray);
-}
-
-.message-content {
-  line-height: 1.5;
-  /* Handling overflow text in the message content */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines of text */
-  -webkit-box-orient: vertical;
 }
 
 .bottom-nav {
@@ -103,4 +76,187 @@
   width: 2rem;
   height: 2rem;
   margin-bottom: 0.5rem;
+}
+
+/* Post Styling */
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.post-button {
+  background: var(--color-cyan);
+  color: var(--color-off-white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.post-button:hover {
+  opacity: 0.8;
+}
+
+.post-divider {
+  border: none;
+  height: 0.01rem;
+  background: var(--color-gray); /* Visible divider color */
+  margin: 0.25rem 0; /* Reduced margin for less space around the divider */
+  width: calc(100% + 2.8rem); /* This compensates for the padding in the feed */
+  margin-left: -1.4rem; /* This aligns the divider to the left edge */
+}
+
+.post-content {
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines of text */
+  -webkit-box-orient: vertical;
+}
+
+.post {
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-left: 0; /* Remove padding to align the header section to the left */
+}
+
+.post-info {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from growing past their content */
+  padding-left: 0.5rem;
+}
+
+.icon-style {
+  color: var(--color-off-white);
+}
+
+/* Login Styling */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(
+    100vh - 48px
+  ); /* Adjust height to fill screen minus bottom nav */
+  background-color: var(--color-dark-green);
+  color: var(--color-off-white);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%; /* Responsive width */
+  max-width: 400px; /* Max width for larger screens */
+  gap: 1rem;
+}
+
+.login-input {
+  background-color: var(--color-off-white);
+  border: 2px solid var(--color-cyan);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: var(--color-dark-green);
+  font-size: 1rem;
+}
+
+.login-button {
+  background-color: var(--color-cyan);
+  color: var(--color-off-white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Login Page Styling */
+
+.login-button:hover {
+  opacity: 0.8;
+}
+
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.4rem;
+  background-color: var(--color-dark-green);
+  color: var(--color-off-white);
+}
+
+.lobby-link-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--color-off-white);
+  border-radius: 0.5rem;
+  color: var(--color-dark-green);
+}
+
+.lobby-link {
+  flex-grow: 1;
+  user-select: all; /* Allow the text to be selected */
+}
+
+.copy-button {
+  background-color: var(--color-cyan);
+  color: var(--color-off-white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  opacity: 0.8;
+}
+
+.player-count {
+  cursor: pointer;
+}
+
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.player-name {
+  background: var(--color-cyan);
+  color: var(--color-off-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  flex-basis: calc(50% - 0.5rem); /* Subtract gap from 50% width */
+  text-align: center;
+}
+
+.start-game-button {
+  background-color: var(--color-blue);
+  color: var(--color-off-white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: auto; /* Push button to the bottom */
+}
+
+.start-game-button:hover {
+  background-color: darken(var(--color-blue), 10%);
 }
