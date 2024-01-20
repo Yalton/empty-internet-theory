@@ -1,19 +1,25 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
+
 const BottomNav = () => {
-	return (
-		<>
-			<br />
-			<div className="bottom-nav">
-				<div className="nav-item">
-					<i className="icon home-icon"></i>
-					<span>Feed</span>
-				</div>
-				<div className="nav-item">
-					<i className="icon notifications-icon"></i>
-					<span>Profile</span>
-				</div>
-			</div>
-		</>
-	);
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <br />
+      <div className="bottom-nav">
+        <div className="nav-item" onClick={() => navigate('/timeline')}>
+          <i className="icon home-icon"></i>
+          <span>Feed</span>
+        </div>
+        <div className="nav-item" onClick={() => navigate('/profile')}>
+          <i className="icon notifications-icon"></i>
+          <span>Profile</span>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default BottomNav;

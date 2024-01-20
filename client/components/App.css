@@ -260,3 +260,29 @@
 .start-game-button:hover {
   background-color: darken(var(--color-blue), 10%);
 }
+
+
+/* Profile Page */
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-dark-green);
+  color: var(--color-off-white);
+}
+
+.profile-picture {
+  width: 100px; /* Adjust size as needed */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bio {
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0 1rem;
+}
