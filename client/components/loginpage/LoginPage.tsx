@@ -15,9 +15,8 @@ const LoginPage = () => {
 
 	return (
 		<div className="app">
-			<span className={"text-pink-500 font-bold"}>{status}</span>
 			<span className={"text-pink-500 font-bold"}>
-				[{data && JSON.stringify(data)}]
+				status: {status}, data: [{data && JSON.stringify(data)}]
 			</span>
 
 			<div className="login-container">

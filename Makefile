@@ -1,6 +1,7 @@
 all: gen_bindings copy_bindings
 
 gen_bindings:
+	rm -rf ./server/bindings
 	cd ./server
 	cargo test export_bindings
 

@@ -1,6 +1,6 @@
 use axum::extract::{Json, State};
 use axum::http::StatusCode;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use ts_rs::TS;
 
 use crate::handler::Result;
@@ -19,15 +19,9 @@ pub trait CheckStatus {
     }
 }
 
-#[derive(Debug, Deserialize, TS)]
-#[ts(export)]
-pub struct StatusRequest {
-    verbose: bool,
-}
-
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
-pub struct StatusResponse {
+pub struct Status {
     healthy: bool,
 }
 
@@ -35,9 +29,8 @@ pub struct StatusResponse {
 pub async fn check(
     State(account): State<Account>,
     State(timeline): State<Timeline>,
-    Json(body): Json<StatusRequest>,
-) -> Result<(StatusCode, Json<StatusResponse>)> {
+) -> Result<(StatusCode, Json<Status>)> {
     // TODO.
-    let response = StatusResponse { healthy: true };
+    let response = Status { healthy: true };
     Ok((StatusCode::OK, Json(response)))
 }

@@ -1,23 +1,16 @@
 import { useClient } from "@hooks/useClient.ts";
 import { useQuery } from "@tanstack/react-query";
+import type { Status } from "@bindings/Status.ts";
 
-import type { StatusRequest } from "@bindings/StatusRequest.ts";
-import type { StatusResponse } from "@bindings/StatusResponse.ts";
-
-const getStatus = async (req: StatusRequest): Promise<StatusResponse> => {
+const getStatus = async (): Promise<Status> => {
 	const [client] = useClient();
-	const response = await client.get<StatusResponse>("/status", {
-		responseType: "json",
-		data: req,
-	});
-
-	console.log(response);
+	const response = await client.get<Status>("/status");
 	return response.data;
 };
 
-export const useStatus = (verbose = false) => {
+export const useStatus = () => {
 	return useQuery({
 		queryKey: ["status"],
-		queryFn: () => getStatus({ verbose }),
+		queryFn: getStatus,
 	});
 };
