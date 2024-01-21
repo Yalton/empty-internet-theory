@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import BottomNav from "../common/BottomNav";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "../App.css";
 
 const LoginPage = () => {
 	const [username, setUsername] = useState("");

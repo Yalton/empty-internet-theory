@@ -4,7 +4,8 @@ import react from "@vitejs/plugin-react-swc";
 import { defineConfig, type HmrOptions } from "vite";
 
 const platform = process.env.TAURI_ENV_PLATFORM as string;
-const mobile = !!/android|ios/.exec(platform); // TODO: .test()
+const mobile = !!/android|ios/.exec(platform);
+// TODO: const mobile = /android|ios/.test(platform);
 
 const viteConfig = new URL(import.meta.url).pathname;
 const currentDir = dirname(viteConfig);
