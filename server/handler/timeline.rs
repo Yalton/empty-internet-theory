@@ -5,7 +5,7 @@ use axum::extract::{ConnectInfo, State, WebSocketUpgrade};
 use axum::response::IntoResponse;
 use axum_extra::{headers, TypedHeader};
 
-use crate::service::Timeline;
+use crate::service::timeline::Timeline;
 
 pub async fn subscribe(
     ws: WebSocketUpgrade,

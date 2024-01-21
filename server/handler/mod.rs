@@ -3,6 +3,7 @@ use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use serde::Serialize;
 
+pub mod account;
 pub mod status;
 pub mod timeline;
 

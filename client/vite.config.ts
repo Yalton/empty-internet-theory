@@ -31,6 +31,7 @@ export default defineConfig(async () => ({
 			"@providers": join(currentDir, "./providers"),
 			"@reducers": join(currentDir, "./reducers"),
 			"@styles": join(currentDir, "./styles"),
+			"@bindings": join(currentDir, "./bindings"),
 		},
 	},
 	build: {

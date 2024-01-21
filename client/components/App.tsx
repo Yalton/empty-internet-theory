@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./loginpage/LoginPage";
 import Lobby from "./lobby/Lobby";
@@ -22,4 +24,14 @@ function App() {
 	);
 }
 
-export default App;
+const WithProviders = () => {
+	const queryClient = new QueryClient();
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<App />
+		</QueryClientProvider>
+	);
+};
+
+export default WithProviders;

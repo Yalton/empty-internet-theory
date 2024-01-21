@@ -34,6 +34,7 @@ async fn main() -> anyhow::Result<()> {
 
     // Middlewares.
     // TODO: Move to middleware::instantiate_stack().
+    // TODO: Client failures as failures.
     let error_layer = HandleErrorLayer::new(middleware::handle_box_error);
     let tracing_layer = TraceLayer::new_for_http()
         .make_span_with(DefaultMakeSpan::new().include_headers(true))
@@ -53,8 +54,10 @@ async fn main() -> anyhow::Result<()> {
     // Service.
     let state = service::State::connect().await?;
     let app = Router::new()
-        .route("/", get(|| async { "Hello, World!" }))
         .route("/status", get(handler::status::check))
+        .route("/account/up", post(handler::account::sign_up))
+        .route("/account/in", post(handler::account::sign_in))
+        .route("/onetime/", post(handler::account::visit))
         .route("/ws", get(handler::timeline::subscribe))
         .fallback(handler::fallback)
         .layer(middlewares)

@@ -1,19 +1,25 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import { useStatus } from "@hooks/useStatus.ts"; // Import useNavigate
 
 const LoginPage = () => {
+	const { data, status } = useStatus();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate(); // Initialize the navigate function
 
 	const handleLogin = () => {
 		alert("Login attempt with: " + username + " " + password);
-
 		navigate("/lobby");
 	};
 
 	return (
 		<div className="app">
+			<span className={"text-pink-500 font-bold"}>{status}</span>
+			<span className={"text-pink-500 font-bold"}>
+				[{data && JSON.stringify(data)}]
+			</span>
+
 			<div className="login-container">
 				<div className="login-form">
 					<input
