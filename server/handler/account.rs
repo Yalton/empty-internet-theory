@@ -8,7 +8,10 @@ use crate::service::account::Account;
 
 #[derive(Debug, Deserialize, TS)]
 #[ts(export)]
-pub struct SignUpRequest {}
+pub struct SignUpRequest {
+    username: String,
+    password: String,
+}
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
@@ -26,7 +29,10 @@ pub async fn sign_up(
 
 #[derive(Debug, Deserialize, TS)]
 #[ts(export)]
-pub struct SignInRequest {}
+pub struct SignInRequest {
+    username: String,
+    password: String,
+}
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
@@ -44,7 +50,9 @@ pub async fn sign_in(
 
 #[derive(Debug, Deserialize, TS)]
 #[ts(export)]
-pub struct VisitRequest {}
+pub struct VisitRequest {
+    username: String,
+}
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]

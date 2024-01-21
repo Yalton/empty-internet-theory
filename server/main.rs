@@ -3,8 +3,8 @@ use std::time::Duration;
 
 use axum::{error_handling::*, routing::*};
 use clap::Parser;
-use tower_http::{cors::*, request_id::*, trace::*};
 use tower_http::ServiceBuilderExt as _;
+use tower_http::{cors::*, request_id::*, trace::*};
 use tracing_subscriber::layer::SubscriberExt as _;
 use tracing_subscriber::util::SubscriberInitExt as _;
 

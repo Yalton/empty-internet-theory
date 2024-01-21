@@ -22,7 +22,9 @@ pub trait CheckStatus {
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
 pub struct Status {
-    healthy: bool,
+    account: bool,
+    timeline: bool,
+    overall: bool,
 }
 
 #[tracing::instrument]
@@ -30,7 +32,15 @@ pub async fn check(
     State(account): State<Account>,
     State(timeline): State<Timeline>,
 ) -> Result<(StatusCode, Json<Status>)> {
-    // TODO.
-    let response = Status { healthy: true };
+    let account = account.check().await.is_ok();
+    let timeline = timeline.check().await.is_ok();
+
+    let overall = account && timeline;
+    let response = Status {
+        account,
+        timeline,
+        overall,
+    };
+
     Ok((StatusCode::OK, Json(response)))
 }
