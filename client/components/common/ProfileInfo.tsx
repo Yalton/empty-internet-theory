@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ProfileIcon from "./ProfileIcon";
 import "../App.css";
 
 type ProfileProps = {
@@ -11,10 +12,12 @@ type ProfileProps = {
 const ProfileInfo = ({ profilePicture, displayName, username, bio }: ProfileProps) => {
   return (
     <div className="profile-header">
-      <img src={profilePicture} alt={`${displayName}'s profile`} className="profile-picture" />
-      <h1 className="displayname">{displayName}</h1>
-      <h2 className="username">@{username}</h2>
-      <p className="bio">{bio}</p>
+      <ProfileIcon/>
+      <div className="profile-details">
+        <h1 className="displayname">{displayName}</h1>
+        <h2 className="username">@{username}</h2>
+        <p className="bio">{bio}</p>
+      </div>
     </div>
   );
 };

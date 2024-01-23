@@ -9,18 +9,18 @@ import PostGame from "./postgame/PostGame";
 import "./App.css";
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/lobby" element={<Lobby />} />
-        <Route path="/pregame" element={<PostGame />} />
-        <Route path="/timeline" element={<FeedPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/postgame" element={<PostGame />} />
-      </Routes>
-    </Router>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<LoginPage />} />
+				<Route path="/lobby" element={<Lobby />} />
+				<Route path="/pregame" element={<PostGame />} />
+				<Route path="/timeline" element={<FeedPage />} />
+				<Route path="/profile" element={<ProfilePage />} />
+				<Route path="/postgame" element={<PostGame />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
