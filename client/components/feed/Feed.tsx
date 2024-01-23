@@ -3,8 +3,6 @@ import { invoke } from "@tauri-apps/api/core";
 import BottomNav from "../common/BottomNav";
 import Post from "../common/Post";
 
-import "../App.css";
-
 function FeedPage() {
 	const [greetMsg, setGreetMsg] = useState("");
 	const [name, setName] = useState("");

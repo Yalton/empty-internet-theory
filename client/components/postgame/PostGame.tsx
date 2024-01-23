@@ -1,6 +1,3 @@
-import React from "react";
-import "../App.css";
-
 // Mock data for player scores
 const playerScores = [
 	{ username: "PlayerOne", points: 150 },

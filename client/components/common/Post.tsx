@@ -1,5 +1,3 @@
-import React from "react";
-import "../App.css";
 import ProfileIcon from "./ProfileIcon";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";

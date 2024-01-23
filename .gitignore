@@ -17,6 +17,7 @@ Cargo.lock
 
 # Lang: Ts
 dist/
+bindings/
 node_modules/
 package-lock.json
 *.tsbuildinfo

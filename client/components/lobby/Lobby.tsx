@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-
-import "../App.css";
 
 const LobbyPage = () => {
 	const [players, setPlayers] = useState([
@@ -9,6 +7,7 @@ const LobbyPage = () => {
 		"Player2",
 		"Player3", // ...add more player names
 	]);
+
 	const [lobbyLink, setLobbyLink] = useState("http://example.com/lobby");
 	const [showPlayers, setShowPlayers] = useState(false);
 	const navigate = useNavigate(); // Initialize the navigate function

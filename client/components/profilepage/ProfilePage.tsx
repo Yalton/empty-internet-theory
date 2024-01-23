@@ -1,4 +1,3 @@
-import React from "react";
 import BottomNav from "../common/BottomNav";
 import Post from "../common/Post";
 import ProfileInfo from "../common/ProfileInfo";
