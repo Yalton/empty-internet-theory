@@ -15,16 +15,19 @@ pub struct SignUpRequest {
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
-pub struct SignUpResponse {}
+pub struct SignUpResponse {
+    token: String,
+}
 
 #[tracing::instrument]
 pub async fn sign_up(
     State(account): State<Account>,
     Json(body): Json<SignUpRequest>,
 ) -> Result<(StatusCode, Json<SignUpResponse>)> {
-    // TODO.
-    let response = SignUpResponse {};
-    Ok((StatusCode::OK, Json(response)))
+    // TODO: Custom error codes and reasons.
+    let token = account.sign_in(&body.username, &body.password).await?;
+    let response = SignUpResponse { token };
+    Ok((StatusCode::CREATED, Json(response)))
 }
 
 #[derive(Debug, Deserialize, TS)]
@@ -36,34 +39,40 @@ pub struct SignInRequest {
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
-pub struct SignInResponse {}
+pub struct SignInResponse {
+    token: String,
+}
 
 #[tracing::instrument]
 pub async fn sign_in(
     State(account): State<Account>,
     Json(body): Json<SignInRequest>,
 ) -> Result<(StatusCode, Json<SignInResponse>)> {
-    // TODO.
-    let response = SignInResponse {};
+    // TODO: Custom error codes and reasons.
+    let token = account.sign_in(&body.username, &body.password).await?;
+    let response = SignInResponse { token };
     Ok((StatusCode::OK, Json(response)))
 }
 
 #[derive(Debug, Deserialize, TS)]
 #[ts(export)]
-pub struct VisitRequest {
+pub struct OneTimeRequest {
     username: String,
 }
 
 #[derive(Debug, Serialize, TS)]
 #[ts(export)]
-pub struct VisitResponse {}
+pub struct OneTimeResponse {
+    token: String,
+}
 
 #[tracing::instrument]
-pub async fn visit(
+pub async fn one_time(
     State(account): State<Account>,
-    Json(body): Json<VisitRequest>,
-) -> Result<(StatusCode, Json<VisitResponse>)> {
-    // TODO.
-    let response = VisitResponse {};
+    Json(body): Json<OneTimeRequest>,
+) -> Result<(StatusCode, Json<OneTimeResponse>)> {
+    // TODO: Custom error codes and reasons.
+    let token = account.one_time(&body.username).await?;
+    let response = OneTimeResponse { token };
     Ok((StatusCode::OK, Json(response)))
 }

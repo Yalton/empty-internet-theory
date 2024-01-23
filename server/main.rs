@@ -9,6 +9,7 @@ use tracing_subscriber::layer::SubscriberExt as _;
 use tracing_subscriber::util::SubscriberInitExt as _;
 
 mod handler;
+mod internal;
 mod middleware;
 mod service;
 
@@ -57,7 +58,8 @@ async fn main() -> anyhow::Result<()> {
         .route("/status", get(handler::status::check))
         .route("/account/up", post(handler::account::sign_up))
         .route("/account/in", post(handler::account::sign_in))
-        .route("/onetime/", post(handler::account::visit))
+        .route("/onetime/", post(handler::account::one_time))
+        .route("/leaderboard", post(handler::leaders::top))
         .route("/ws", get(handler::timeline::subscribe))
         .fallback(handler::fallback)
         .layer(middlewares)
